@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_USER: alvaroana
+      POSTGRES_PASSWORD: alvaroana
+      POSTGRES_DB: crm
+    ports:
+      - "5432:5432"
+  crm:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crm
+    environment:
+      CLOUDINARY_URL: https://cloudinary.com/
+      DATABASE_URL: postgres://alvaroana:alvaroana@db:5432/crm
+    ports:
+      - "80:3000"

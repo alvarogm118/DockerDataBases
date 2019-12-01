@@ -1,0 +1,5 @@
+Para compilar la imagen:
+sudo docker build -t alvaroana/monocontenedor
+
+Para arrancar el contenedor:
+sudo docker run -d --name alvaroana -p 80:3000 alvaroana/monocontenedor
